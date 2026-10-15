@@ -6,3 +6,156 @@
  Version:      1.0.0
  Text Domain:  storefront-dunkin
 */
+
+/* =========================================================
+   1. VARIABLES (reprises du Design System et de Figma)
+   ========================================================= */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --grey-900: #212529;
+  --brown-900: #3e342f;
+  --beige-50: #f8f4f1;
+  --beige-300: #dcc7b7;
+  --orange-500: #ef6a00;
+  --orange-600: #d45e00;
+  --orange-700: #c25400;
+  --pink-500: #c63663;
+  --pink-700: #a82b53;
+  --green-700: #1b7a36;
+  --red-700: #b42318;
+
+  --color-brand-primary: var(--orange-500);
+  --color-brand-primary-hover: var(--orange-600);
+  --color-brand-secondary: var(--pink-500);
+  --color-text-brand: var(--orange-700);
+  --color-text-primary: var(--grey-900);
+  --color-text-secondary: var(--brown-900);
+  --color-text-on-primary: var(--black);
+  --color-text-inverse: var(--white);
+  --color-background-page: var(--white);
+  --color-background-section: var(--beige-50);
+  --color-border-default: var(--beige-300);
+  --color-success: var(--green-700);
+  --color-error: var(--red-700);
+
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-pill: 999px;
+}
+
+/* =========================================================
+   2. BASE : polices et couleurs des textes
+   ========================================================= */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Nunito", sans-serif;
+  color: var(--color-text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.site-title {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  letter-spacing: normal;
+  color: var(--color-text-primary);
+}
+
+a {
+  color: var(--color-text-primary);
+}
+
+/* =========================================================
+   3. BOUTONS
+   ========================================================= */
+button,
+input[type="button"],
+input[type="submit"],
+.button,
+.added_to_cart {
+  background-color: var(--color-brand-primary);
+  border-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  padding: 0.75em 1.75em;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.button:hover,
+.added_to_cart:hover {
+  background-color: var(--color-brand-primary-hover);
+  border-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+  transform: translateY(-2px);
+}
+
+.button.alt,
+.single_add_to_cart_button {
+  background-color: var(--color-brand-primary);
+  border-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+}
+
+.button.alt:hover,
+.single_add_to_cart_button:hover {
+  background-color: var(--color-brand-primary-hover);
+  border-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+}
+
+/* =========================================================
+   4. EN-TÊTE
+   ========================================================= */
+.site-header {
+  background-color: var(--color-background-page);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.main-navigation ul.menu > li > a {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* Lien de la page en cours souligné en orange, comme sur la maquette */
+.main-navigation ul.menu > li.current-menu-item > a {
+  text-decoration: underline;
+  text-decoration-color: var(--color-brand-primary);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+/* Icône panier en rose */
+.site-header-cart .cart-contents::after {
+  color: var(--color-brand-secondary);
+}
+
+/* =========================================================
+   5. PIED DE PAGE
+   ========================================================= */
+.site-footer {
+  background-color: var(--color-border-default);
+  color: var(--color-text-secondary);
+}
+
+.site-footer a,
+.site-footer h1,
+.site-footer h2,
+.site-footer h3,
+.site-footer h4 {
+  color: var(--color-text-primary);
+}
