@@ -92,3 +92,40 @@ add_action( 'init', function () {
 		echo '</div>'; // ferme le bloc unique
 	}, 68 );
 } );
+
+/**
+ * BOUTIQUE : pastilles de filtre par catégorie, au-dessus de la grille.
+ * La pastille de la catégorie affichée est « active ».
+ */
+add_action( 'woocommerce_before_shop_loop', function () {
+	$categories = get_terms( array(
+		'taxonomy'   => 'product_cat',
+		'hide_empty' => true,
+		'exclude'    => get_option( 'default_product_cat' ), // sans « Non classé »
+	) );
+	$actuelle = is_product_category() ? get_queried_object_id() : 0;
+
+	echo '<nav class="dunkin-filtres" aria-label="Catégories de produits">';
+	printf(
+		'<a class="dunkin-pastille%s" href="%s">Tout</a>',
+		$actuelle ? '' : ' is-active',
+		esc_url( wc_get_page_permalink( 'shop' ) )
+	);
+	foreach ( $categories as $categorie ) {
+		printf(
+			'<a class="dunkin-pastille%s" href="%s">%s</a>',
+			$actuelle === $categorie->term_id ? ' is-active' : '',
+			esc_url( get_term_link( $categorie ) ),
+			esc_html( $categorie->name )
+		);
+	}
+	echo '</nav>';
+}, 5 );
+
+
+
+// BOUTIQUE : on retire le tri et le nombre de résultats en bas (déjà présents en haut)
+add_action( 'init', function () {
+	remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10 );
+	remove_action( 'woocommerce_after_shop_loop', 'woocommerce_result_count', 20 );
+} );

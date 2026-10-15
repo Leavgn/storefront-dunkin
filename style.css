@@ -295,6 +295,134 @@ input[type="submit"]:hover,
 .page-template-template-homepage .site-main {
   padding-top: 0;
 }
+/* =========================================================
+   8. BOUTIQUE : titre, pastilles, grille de cartes
+   ========================================================= */
+
+/* Titre « Boutique » à gauche */
+.woocommerce-products-header {
+  text-align: left;
+  padding-bottom: 16px;
+}
+
+.woocommerce-products-header__title {
+  font-size: 2.6rem;
+}
+
+/* Pastilles de filtre */
+.dunkin-filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dunkin-pastille {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-background-page);
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.dunkin-pastille:hover {
+  border-color: var(--color-brand-primary);
+}
+
+.dunkin-pastille.is-active {
+  background-color: var(--color-brand-primary);
+  border-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+}
+
+/* Liste de tri */
+.woocommerce-ordering select {
+  padding: 8px 12px;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-s);
+  background-color: var(--color-background-page);
+  font-weight: 700;
+}
+
+/* Grille : 3 colonnes égales (Storefront utilise des « float », on passe en grid) */
+.site-main ul.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.site-main ul.products::before,
+.site-main ul.products::after {
+  display: none;
+}
+.site-main ul.products[class*="columns-"] li.product,
+.storefront-full-width-content
+  .site-main
+  ul.products[class*="columns-"]
+  li.product {
+  width: auto;
+  margin-right: 0;
+  float: none;
+}
+
+/* Carte produit */
+.site-main ul.products li.product {
+  display: flex;
+  flex-direction: column;
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 16px;
+  text-align: left;
+  background-color: var(--color-background-page);
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.site-main ul.products li.product:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(62, 52, 47, 0.12);
+}
+
+/* Le lien (image + nom + prix) prend la place disponible : les boutons s'alignent en bas */
+ul.products li.product .woocommerce-loop-product__link {
+  flex: 1;
+}
+
+/* Image dans un carré, sans déformation */
+ul.products li.product img {
+  aspect-ratio: 1;
+  object-fit: contain;
+  margin: 0 0 12px;
+}
+
+ul.products li.product .woocommerce-loop-product__title {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+ul.products li.product .price {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+ul.products li.product .button {
+  align-self: flex-start;
+  margin-top: 12px;
+  padding: 0.6em 1.3em;
+  font-size: 0.9rem;
+}
 
 /* --- Mobile : tout sur une colonne --- */
 @media (max-width: 768px) {
@@ -306,5 +434,13 @@ input[type="submit"]:hover,
 
   .dunkin-etapes__liste {
     grid-template-columns: 1fr;
+  }
+  .site-main ul.products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .site-main ul.products li.product {
+    padding: 12px;
   }
 }
