@@ -159,3 +159,152 @@ input[type="submit"]:hover,
 .site-footer h4 {
   color: var(--color-text-primary);
 }
+
+/* =========================================================
+   6. PAGE D'ACCUEIL
+   ========================================================= */
+
+/* Empêche le défilement horizontal causé par les sections pleine largeur */
+.site {
+  overflow-x: clip;
+}
+
+/* --- Hero : fond beige sur toute la largeur de l'écran --- */
+.dunkin-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  margin: 0 calc(50% - 50vw) 64px;
+  padding: 64px calc(50vw - 50%);
+  background-color: var(--color-background-section);
+}
+
+.dunkin-hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.dunkin-hero p {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 28px;
+}
+
+.dunkin-hero__boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Bouton secondaire « Voir la carte » : fond blanc, bordure beige */
+.dunkin-button--secondaire,
+.dunkin-button--secondaire:hover {
+  background-color: var(--color-background-page);
+  border: 2px solid var(--color-border-default);
+  color: var(--color-text-primary);
+}
+
+.dunkin-hero__image {
+  background-color: var(--color-background-page);
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  padding: 24px;
+}
+
+/* --- Comment ça marche ? --- */
+.dunkin-etapes {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.dunkin-etapes__liste {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 32px 0 0;
+  list-style: none;
+}
+
+.dunkin-etapes__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.dunkin-etapes h3 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.dunkin-etapes p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+/* --- Nos catégories : cartes à bordure beige --- */
+.storefront-product-categories .section-title {
+  text-align: left;
+}
+
+.storefront-product-categories ul.products li.product-category {
+  padding: 16px;
+  background-color: var(--color-background-page);
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.storefront-product-categories ul.products li.product-category:hover {
+  border-color: var(--color-brand-secondary);
+  transform: translateY(-4px);
+}
+
+/* Nom de la catégorie + flèche rose, sans le nombre de produits */
+.woocommerce-loop-category__title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+}
+
+.woocommerce-loop-category__title .count {
+  display: none;
+}
+
+.woocommerce-loop-category__title::after {
+  content: "→";
+  color: var(--color-brand-secondary);
+}
+
+.page-template-template-homepage .site-header {
+  margin-bottom: 0;
+}
+
+.page-template-template-homepage .site-main {
+  padding-top: 0;
+}
+
+/* --- Mobile : tout sur une colonne --- */
+@media (max-width: 768px) {
+  .dunkin-hero {
+    grid-template-columns: 1fr;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .dunkin-etapes__liste {
+    grid-template-columns: 1fr;
+  }
+}
