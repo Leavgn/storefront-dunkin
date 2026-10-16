@@ -632,6 +632,37 @@ ul.products li.product .button {
   opacity: 0.45;
 }
 
+/* ----- Allergènes et calories (itération 4) ----- */
+.dunkin-infos {
+  margin: 0 0 1.5rem;
+}
+.dunkin-infos__titre {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.dunkin-infos__allergenes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+.dunkin-infos__allergenes li {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 999px;
+  background: var(--color-background-section);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.dunkin-infos__calories {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
 /* --- Mobile : tout sur une colonne --- */
 @media (max-width: 768px) {
   .dunkin-hero {

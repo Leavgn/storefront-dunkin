@@ -141,3 +141,28 @@ add_filter( 'woocommerce_get_availability_text', function ( $text, $product ) {
 	}
 	return $text;
 }, 10, 2 );
+
+// Itération 4 : allergènes et calories (champs SCF), affichés avant le prix
+add_action( 'woocommerce_single_product_summary', function () {
+	if ( ! function_exists( 'get_field' ) ) {
+		return;
+	}
+	$allergenes = get_field( 'allergenes' );
+	$calories   = get_field( 'calories' );
+	if ( ! $allergenes && ! $calories ) {
+		return;
+	}
+	echo '<div class="dunkin-infos">';
+	if ( $allergenes ) {
+		echo '<p class="dunkin-infos__titre">Allergènes</p>';
+		echo '<ul class="dunkin-infos__allergenes">';
+		foreach ( $allergenes as $allergene ) {
+			echo '<li>' . esc_html( $allergene ) . '</li>';
+		}
+		echo '</ul>';
+	}
+	if ( $calories ) {
+		echo '<p class="dunkin-infos__calories">' . esc_html( $calories ) . ' kcal</p>';
+	}
+	echo '</div>';
+}, 7 );
