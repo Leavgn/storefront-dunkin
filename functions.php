@@ -135,9 +135,9 @@ add_action( 'init', function () {
  * WooCommerce ne l'affiche que si le stock est géré en quantité :
  * on l'ajoute pour les autres produits disponibles.
  */
-add_action( 'woocommerce_single_product_summary', function () {
-	global $product;
-	if ( $product->is_in_stock() && ! $product->managing_stock() ) {
-		echo '<p class="stock in-stock">En stock</p>';
+add_filter( 'woocommerce_get_availability_text', function ( $text, $product ) {
+	if ( '' === $text && $product->is_in_stock() ) {
+		$text = 'En stock';
 	}
-}, 25 );
+	return $text;
+}, 10, 2 );

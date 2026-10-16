@@ -541,6 +541,36 @@ ul.products li.product .button {
   width: 100%;
 }
 
+/* Produit variable : les options au-dessus, prix, puis quantité + bouton */
+.single-product div.product form.cart.variations_form {
+  display: block;
+}
+.single-product div.product table.variations th,
+.single-product div.product table.variations td {
+  display: block;
+  padding: 0;
+  background: none;
+}
+.single-product div.product table.variations th label {
+  font-weight: 700;
+}
+.single-product div.product .woocommerce-variation-price {
+  margin: 16px 0;
+}
+.single-product div.product .woocommerce-variation-price .price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+.single-product div.product .woocommerce-variation-add-to-cart {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.single-product div.product .single_add_to_cart_button {
+  white-space: nowrap;
+}
+
 /* --- Mobile : tout sur une colonne --- */
 @media (max-width: 768px) {
   .dunkin-hero {
