@@ -129,3 +129,15 @@ add_action( 'init', function () {
 	remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10 );
 	remove_action( 'woocommerce_after_shop_loop', 'woocommerce_result_count', 20 );
 } );
+
+/**
+ * « En stock » sous la description courte, comme sur la maquette.
+ * WooCommerce ne l'affiche que si le stock est géré en quantité :
+ * on l'ajoute pour les autres produits disponibles.
+ */
+add_action( 'woocommerce_single_product_summary', function () {
+	global $product;
+	if ( $product->is_in_stock() && ! $product->managing_stock() ) {
+		echo '<p class="stock in-stock">En stock</p>';
+	}
+}, 25 );
