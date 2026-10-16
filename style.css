@@ -571,6 +571,67 @@ ul.products li.product .button {
   white-space: nowrap;
 }
 
+/* ----- Pastilles d'options (extension Variation Swatches) ----- */
+.single-product div.product .variable-items-wrapper {
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+.single-product
+  div.product
+  .variable-items-wrapper
+  .variable-item.button-variable-item {
+  min-width: 0;
+  height: 40px;
+  margin: 0;
+  padding: 0 18px;
+  border: 2px solid var(--color-border-default);
+  border-radius: 999px;
+  background: var(--color-background-page);
+  box-shadow: none;
+  color: var(--color-text-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+.single-product
+  div.product
+  .variable-items-wrapper
+  .variable-item
+  .variable-item-span {
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+.single-product
+  div.product
+  .variable-items-wrapper
+  .variable-item.button-variable-item:hover {
+  border-color: var(--color-text-primary);
+  box-shadow: none;
+}
+.single-product
+  div.product
+  .variable-items-wrapper
+  .variable-item.button-variable-item.selected {
+  background: var(--color-brand-primary);
+  border-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+  box-shadow: none;
+}
+.single-product
+  div.product
+  .variable-items-wrapper
+  .variable-item:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+.single-product div.product .variable-items-wrapper .variable-item.disabled {
+  opacity: 0.45;
+}
+
 /* --- Mobile : tout sur une colonne --- */
 @media (max-width: 768px) {
   .dunkin-hero {
