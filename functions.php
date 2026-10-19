@@ -178,3 +178,17 @@ add_filter( 'woocommerce_product_variation_get_name', function ( $name, $variati
 	$parent = wc_get_product( $variation->get_parent_id() );
 	return $parent ? $parent->get_name() : $name;
 }, 10, 2 );
+
+// Itération 6 : instructions pour le retrait sur la page Commande
+// (seulement si le client a choisi « Retrait en boutique »)
+add_action( 'woocommerce_review_order_after_shipping', function () {
+	$modes = WC()->session->get( 'chosen_shipping_methods' );
+	if ( empty( $modes ) || strpos( $modes[0], 'local_pickup' ) !== 0 ) {
+		return;
+	}
+		$instructions = function_exists( 'get_field' ) ? get_field( 'instructions_pour_le_retrait', 'option' ) : '';
+	echo '<tr class="dunkin-retrait"><td colspan="2">';
+	echo '<strong>Instructions pour le retrait</strong>';
+	echo wp_kses_post( wpautop( $instructions ) );
+	echo '</td></tr>';
+} );

@@ -903,6 +903,20 @@ ul.products li.product .button {
 }
 
 /* =========================================================
+   10. COMMANDE
+   ========================================================= */
+
+/* Encadré « Instructions pour le retrait » */
+.woocommerce-checkout-review-order-table .dunkin-retrait td {
+  padding: 1rem;
+  border-left: 4px solid var(--color-brand-primary);
+  background-color: var(--color-background-section);
+}
+
+.woocommerce-checkout-review-order-table .dunkin-retrait p {
+  margin: 0.5rem 0 0;
+}
+/* =========================================================
    10. MOBILE
    ========================================================= */
 @media (max-width: 768px) {
