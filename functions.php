@@ -192,3 +192,10 @@ add_action( 'woocommerce_review_order_after_shipping', function () {
 	echo wp_kses_post( wpautop( $instructions ) );
 	echo '</td></tr>';
 } );
+
+// Pied de page : ligne de copyright, sans le lien « Built with WooCommerce »
+add_filter( 'storefront_credit_link', '__return_false' );
+
+add_filter( 'storefront_copyright_text', function () {
+	return '© ' . date( 'Y' ) . " Dunkin' Click & Collect · Projet étudiant, site non officiel";
+} );

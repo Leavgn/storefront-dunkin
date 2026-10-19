@@ -916,6 +916,17 @@ ul.products li.product .button {
 .woocommerce-checkout-review-order-table .dunkin-retrait p {
   margin: 0.5rem 0 0;
 }
+
+/* Chaque bloc de la page Widgets est un widget séparé :
+   on réduit la grande marge que Storefront met sous chacun */
+.site-footer .widget {
+  margin-bottom: 0.75rem;
+}
+
+/* Ligne de copyright centrée, comme sur la maquette */
+.site-footer .site-info {
+  text-align: center;
+}
 /* =========================================================
    10. MOBILE
    ========================================================= */
