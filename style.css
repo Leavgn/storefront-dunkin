@@ -39,14 +39,14 @@
   --color-success: var(--green-700);
   --color-error: var(--red-700);
 
-  --radius-s: 8px;
-  --radius-m: 16px;
-  --radius-l: 24px;
+  --radius-s: 0.5rem;
+  --radius-m: 1rem;
+  --radius-l: 1.5rem;
   --radius-pill: 999px;
 }
 
 /* =========================================================
-   2. BASE : polices et couleurs des textes
+   2. BASE
    ========================================================= */
 body,
 button,
@@ -74,69 +74,172 @@ a {
   color: var(--color-text-primary);
 }
 
+/* Messages WooCommerce (ex. « Il n'y a pas encore d'avis ») */
+.woocommerce-info {
+  border-left: 4px solid var(--color-brand-primary);
+  background-color: var(--color-background-section);
+  color: var(--color-text-primary);
+}
+.woocommerce-noreviews {
+  border-left: 4px solid var(--color-brand-primary);
+  background-color: var(--color-background-section);
+  color: var(--color-text-primary);
+}
+
+/* Empêche le défilement horizontal des sections pleine largeur */
+.site {
+  overflow-x: clip;
+}
+
 /* =========================================================
    3. BOUTONS
    ========================================================= */
-button,
-input[type="button"],
-input[type="submit"],
-.button,
-.added_to_cart {
-  background-color: var(--color-brand-primary);
-  border-color: var(--color-brand-primary);
-  color: var(--color-text-on-primary);
-  border-radius: var(--radius-pill);
-  font-weight: 700;
+button {
   padding: 0.75em 1.75em;
+  border-color: var(--color-brand-primary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+  font-weight: 700;
   transition:
     background-color 0.2s,
     transform 0.2s;
 }
 
-button:hover,
-input[type="button"]:hover,
-input[type="submit"]:hover,
-.button:hover,
-.added_to_cart:hover {
-  background-color: var(--color-brand-primary-hover);
-  border-color: var(--color-brand-primary-hover);
-  color: var(--color-text-on-primary);
-  transform: translateY(-2px);
-}
-
-.button.alt,
-.single_add_to_cart_button {
-  background-color: var(--color-brand-primary);
+input[type="button"] {
+  padding: 0.75em 1.75em;
   border-color: var(--color-brand-primary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand-primary);
   color: var(--color-text-on-primary);
+  font-weight: 700;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
-.button.alt:hover,
-.single_add_to_cart_button:hover {
-  background-color: var(--color-brand-primary-hover);
-  border-color: var(--color-brand-primary-hover);
+input[type="submit"] {
+  padding: 0.75em 1.75em;
+  border-color: var(--color-brand-primary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand-primary);
   color: var(--color-text-on-primary);
+  font-weight: 700;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.button {
+  padding: 0.75em 1.75em;
+  border-color: var(--color-brand-primary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+  font-weight: 700;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.button.alt {
+  padding: 0.75em 1.75em;
+  border-color: var(--color-brand-primary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+  font-weight: 700;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.added_to_cart {
+  padding: 0.75em 1.75em;
+  border-color: var(--color-brand-primary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+  font-weight: 700;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+button:hover {
+  border-color: var(--color-brand-primary-hover);
+  background-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+  transform: translateY(-0.125rem);
+}
+
+input[type="button"]:hover {
+  border-color: var(--color-brand-primary-hover);
+  background-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+  transform: translateY(-0.125rem);
+}
+
+input[type="submit"]:hover {
+  border-color: var(--color-brand-primary-hover);
+  background-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+  transform: translateY(-0.125rem);
+}
+
+.button:hover {
+  border-color: var(--color-brand-primary-hover);
+  background-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+  transform: translateY(-0.125rem);
+}
+
+.button.alt:hover {
+  border-color: var(--color-brand-primary-hover);
+  background-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+  transform: translateY(-0.125rem);
+}
+
+.added_to_cart:hover {
+  border-color: var(--color-brand-primary-hover);
+  background-color: var(--color-brand-primary-hover);
+  color: var(--color-text-on-primary);
+  transform: translateY(-0.125rem);
+}
+
+/* Bouton secondaire « Voir la carte » */
+.dunkin-button--secondaire {
+  border: 2px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+  color: var(--color-text-primary);
+}
+
+.dunkin-button--secondaire:hover {
+  border: 2px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+  color: var(--color-text-primary);
 }
 
 /* =========================================================
    4. EN-TÊTE
    ========================================================= */
 .site-header {
-  background-color: var(--color-background-page);
   border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
 }
 
-.main-navigation ul.menu > li > a {
+.main-navigation .menu a {
   color: var(--color-text-primary);
   font-weight: 600;
 }
 
-/* Lien de la page en cours souligné en orange, comme sur la maquette */
-.main-navigation ul.menu > li.current-menu-item > a {
+/* Page en cours soulignée en orange */
+.main-navigation .current-menu-item a {
   text-decoration: underline;
   text-decoration-color: var(--color-brand-primary);
   text-decoration-thickness: 3px;
-  text-underline-offset: 8px;
+  text-underline-offset: 0.5rem;
 }
 
 /* Icône panier en rose */
@@ -152,10 +255,22 @@ input[type="submit"]:hover,
   color: var(--color-text-secondary);
 }
 
-.site-footer a,
-.site-footer h1,
-.site-footer h2,
-.site-footer h3,
+.site-footer a {
+  color: var(--color-text-primary);
+}
+
+.site-footer h1 {
+  color: var(--color-text-primary);
+}
+
+.site-footer h2 {
+  color: var(--color-text-primary);
+}
+
+.site-footer h3 {
+  color: var(--color-text-primary);
+}
+
 .site-footer h4 {
   color: var(--color-text-primary);
 }
@@ -163,67 +278,59 @@ input[type="submit"]:hover,
 /* =========================================================
    6. PAGE D'ACCUEIL
    ========================================================= */
-
-/* Empêche le défilement horizontal causé par les sections pleine largeur */
-.site {
-  overflow-x: clip;
+.page-template-template-homepage .site-header {
+  margin-bottom: 0;
+}
+.page-template-template-homepage .site-main {
+  padding-top: 0;
 }
 
-/* --- Hero : fond beige sur toute la largeur de l'écran --- */
+/* Hero : fond beige sur toute la largeur de l'écran */
 .dunkin-hero {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
+  gap: 3rem;
   align-items: center;
-  margin: 0 calc(50% - 50vw) 64px;
-  padding: 64px calc(50vw - 50%);
+  margin: 0 calc(50% - 50vw) 4rem;
+  padding: 4rem calc(50vw - 50%);
   background-color: var(--color-background-section);
 }
 
 .dunkin-hero h1 {
+  margin-bottom: 1rem;
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   line-height: 1.1;
-  margin-bottom: 16px;
 }
 
 .dunkin-hero p {
+  margin-bottom: 1.75rem;
   font-size: 1.15rem;
   color: var(--color-text-secondary);
-  margin-bottom: 28px;
 }
 
 .dunkin-hero__boutons {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-}
-
-/* Bouton secondaire « Voir la carte » : fond blanc, bordure beige */
-.dunkin-button--secondaire,
-.dunkin-button--secondaire:hover {
-  background-color: var(--color-background-page);
-  border: 2px solid var(--color-border-default);
-  color: var(--color-text-primary);
+  gap: 1rem;
 }
 
 .dunkin-hero__image {
-  background-color: var(--color-background-page);
+  padding: 1.5rem;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-l);
-  padding: 24px;
+  background-color: var(--color-background-page);
 }
 
-/* --- Comment ça marche ? --- */
 .dunkin-etapes {
+  margin-bottom: 4rem;
   text-align: center;
-  margin-bottom: 64px;
 }
 
 .dunkin-etapes__liste {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin: 32px 0 0;
+  gap: 2rem;
+  margin: 2rem 0 0;
   list-style: none;
 }
 
@@ -231,9 +338,9 @@ input[type="submit"]:hover,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  margin-bottom: 12px;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.75rem;
   border-radius: 50%;
   background-color: var(--color-brand-primary);
   color: var(--color-text-on-primary);
@@ -243,66 +350,43 @@ input[type="submit"]:hover,
 }
 
 .dunkin-etapes h3 {
+  margin-bottom: 0.25rem;
   font-size: 1.25rem;
-  margin-bottom: 4px;
 }
-
 .dunkin-etapes p {
   margin: 0;
   color: var(--color-text-secondary);
 }
 
-/* --- Nos catégories : cartes à bordure beige --- */
+/* Nos catégories (les cartes reprennent le style de la boutique, section 7) */
 .storefront-product-categories .section-title {
   text-align: left;
 }
 
-.storefront-product-categories ul.products li.product-category {
-  padding: 16px;
-  background-color: var(--color-background-page);
-  border: 2px solid var(--color-border-default);
-  border-radius: var(--radius-l);
-  transition:
-    border-color 0.2s,
-    transform 0.2s;
-}
-
 .storefront-product-categories ul.products li.product-category:hover {
   border-color: var(--color-brand-secondary);
-  transform: translateY(-4px);
 }
 
-/* Nom de la catégorie + flèche rose, sans le nombre de produits */
+/* Nom + flèche rose, sans le nombre de produits */
 .woocommerce-loop-category__title {
   display: flex;
   justify-content: space-between;
   font-size: 1.4rem;
 }
-
 .woocommerce-loop-category__title .count {
   display: none;
 }
-
 .woocommerce-loop-category__title::after {
   content: "→";
   color: var(--color-brand-secondary);
 }
 
-.page-template-template-homepage .site-header {
-  margin-bottom: 0;
-}
-
-.page-template-template-homepage .site-main {
-  padding-top: 0;
-}
 /* =========================================================
-   8. BOUTIQUE : titre, pastilles, grille de cartes
+   7. BOUTIQUE
    ========================================================= */
-
-/* Titre « Boutique » à gauche */
 .woocommerce-products-header {
+  padding-bottom: 1rem;
   text-align: left;
-  padding-bottom: 16px;
 }
 
 .woocommerce-products-header__title {
@@ -313,15 +397,15 @@ input[type="submit"]:hover,
 .dunkin-filtres {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .dunkin-pastille {
   display: inline-flex;
   align-items: center;
-  height: 40px;
-  padding: 0 20px;
+  height: 2.5rem;
+  padding: 0 1.25rem;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-pill);
   background-color: var(--color-background-page);
@@ -335,73 +419,76 @@ input[type="submit"]:hover,
 }
 
 .dunkin-pastille.is-active {
-  background-color: var(--color-brand-primary);
   border-color: var(--color-brand-primary);
+  background-color: var(--color-brand-primary);
   color: var(--color-text-on-primary);
 }
 
 /* Liste de tri */
 .woocommerce-ordering select {
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-s);
   background-color: var(--color-background-page);
   font-weight: 700;
 }
 
-/* Grille : 3 colonnes égales (Storefront utilise des « float », on passe en grid) */
+/* Grille de 3 colonnes (Storefront utilise des float : on les annule) */
 .site-main ul.products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .site-main ul.products::before,
 .site-main ul.products::after {
   display: none;
 }
-.site-main ul.products[class*="columns-"] li.product,
+
+/* Annule les largeurs de Storefront : c'est la grille qui gère */
+.site-main ul.products[class*="columns-"] li.product {
+  width: auto;
+  margin: 0;
+}
+
+/* Même chose pour les pages pleine largeur, où Storefront a une règle plus forte */
 .storefront-full-width-content
   .site-main
   ul.products[class*="columns-"]
   li.product {
   width: auto;
-  margin-right: 0;
-  float: none;
+  margin: 0;
 }
 
-/* Carte produit */
+/* Carte produit (et carte catégorie de l'accueil) */
 .site-main ul.products li.product {
   display: flex;
   flex-direction: column;
-  float: none;
-  width: auto;
-  margin: 0;
-  padding: 16px;
-  text-align: left;
-  background-color: var(--color-background-page);
+  padding: 1rem;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+  text-align: left;
   transition:
     transform 0.2s,
-    box-shadow 0.2s;
+    box-shadow 0.2s,
+    border-color 0.2s;
 }
 
 .site-main ul.products li.product:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(62, 52, 47, 0.12);
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.75rem 1.75rem rgba(62, 52, 47, 0.12);
 }
 
-/* Le lien (image + nom + prix) prend la place disponible : les boutons s'alignent en bas */
+/* Le lien prend la place disponible : les boutons s'alignent en bas */
 ul.products li.product .woocommerce-loop-product__link {
   flex: 1;
 }
 
-/* Image dans un carré, sans déformation */
 ul.products li.product img {
   aspect-ratio: 1;
   object-fit: contain;
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
 }
 
 ul.products li.product .woocommerce-loop-product__title {
@@ -419,31 +506,25 @@ ul.products li.product .price {
 
 ul.products li.product .button {
   align-self: flex-start;
-  margin-top: 12px;
+  margin-top: 0.75rem;
   padding: 0.6em 1.3em;
   font-size: 0.9rem;
 }
 
 /* =========================================================
-   9. FICHE PRODUIT
+   8. FICHE PRODUIT
    ========================================================= */
 
-/* Image principale dans une carte à bordure beige */
+/* Galerie */
 .woocommerce-product-gallery__image img {
-  padding: 24px;
-  background-color: var(--color-background-page);
+  padding: 1.5rem;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
 }
-.woocommerce-info,
-.woocommerce-noreviews {
-  background-color: var(--color-background-section);
-  color: var(--color-text-primary);
-  border-left: 4px solid var(--color-brand-primary);
-}
-/* Miniatures sous l'image */
+
 .single-product div.product .flex-control-thumbs li img {
-  padding: 8px;
+  padding: 0.5rem;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-m);
   opacity: 1;
@@ -453,13 +534,18 @@ ul.products li.product .button {
   border-color: var(--color-brand-primary);
 }
 
-/* Titre, prix, description courte */
+/* Titre, prix, description, stock, catégorie */
 .single-product div.product .product_title {
+  margin-bottom: 0.75rem;
   font-size: 2.6rem;
-  margin-bottom: 12px;
 }
 
 .single-product div.product p.price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+.single-product div.product .woocommerce-variation-price .price {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--color-text-primary);
@@ -469,133 +555,123 @@ ul.products li.product .button {
   color: var(--color-text-secondary);
 }
 
-/* « En stock » en vert */
 .single-product div.product .stock.in-stock {
   color: var(--color-success);
   font-weight: 700;
 }
 
-/* Quantité en pilule + bouton sur la même ligne */
-.single-product div.product form.cart {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.single-product div.product form.cart .quantity .qty {
-  width: 80px;
-  height: 52px;
-  border: 2px solid var(--color-border-default);
-  border-radius: var(--radius-pill);
-  background-color: var(--color-background-page);
-  text-align: center;
-  font-weight: 800;
-}
-
-.single-product div.product .single_add_to_cart_button {
-  padding: 0.9em 2.2em;
-}
-
-/* Catégorie */
 .single-product div.product .product_meta {
   border-top: 0;
   font-size: 0.9rem;
   color: var(--color-text-secondary);
 }
 
-/* Onglets à l'horizontale, l'onglet actif souligné en orange
-   (Storefront les met en colonne à gauche : on annule) */
-.single-product div.product .woocommerce-tabs ul.tabs {
+/* Allergènes et calories (itération 4) */
+.dunkin-infos {
+  margin: 0 0 1.5rem;
+}
+
+.dunkin-infos__titre {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.dunkin-infos__allergenes {
   display: flex;
-  gap: 32px;
-  float: none;
-  width: 100%;
-  margin: 0 0 24px;
-  border-bottom: 2px solid var(--color-border-default);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
 }
 
-.single-product div.product .woocommerce-tabs ul.tabs li {
-  border: 0;
-}
-
-.single-product div.product .woocommerce-tabs ul.tabs li a {
-  padding: 12px 0;
-  font-family: "Fredoka", sans-serif;
-  font-size: 1.25rem;
+.dunkin-infos__allergenes li {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+  background: var(--color-background-section);
+  font-size: 0.875rem;
   font-weight: 600;
+}
+
+.dunkin-infos__calories {
+  margin: 0;
+  font-size: 0.875rem;
   color: var(--color-text-secondary);
 }
 
-.single-product div.product .woocommerce-tabs ul.tabs li.active a {
-  color: var(--color-text-primary);
-  box-shadow: inset 0 -3px 0 var(--color-brand-primary);
+/* Options (produit variable) au-dessus, puis prix, puis quantité + bouton */
+.single-product div.product form.cart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.single-product div.product .woocommerce-variation-add-to-cart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* Storefront ajoute une petite flèche à l'onglet actif : on la retire */
-.single-product div.product .woocommerce-tabs ul.tabs li.active::after {
-  display: none;
-}
-
-.single-product div.product .woocommerce-tabs .panel {
-  float: none;
-  width: 100%;
-}
-
-/* Produit variable : les options au-dessus, prix, puis quantité + bouton */
 .single-product div.product form.cart.variations_form {
   display: block;
 }
-.single-product div.product table.variations th,
+
+.single-product div.product table.variations th {
+  display: block;
+  padding: 0;
+  background: none;
+}
 .single-product div.product table.variations td {
   display: block;
   padding: 0;
   background: none;
 }
-.single-product div.product table.variations th label {
-  font-weight: 700;
-}
+
 .single-product div.product .woocommerce-variation-price {
-  margin: 16px 0;
+  margin: 1rem 0;
 }
-.single-product div.product .woocommerce-variation-price .price {
-  font-size: 1.4rem;
+
+/* Quantité en pastille + bouton */
+.single-product div.product form.cart .qty {
+  width: 5rem;
+  height: 3.25rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-background-page);
   font-weight: 800;
-  color: var(--color-text-primary);
+  text-align: center;
 }
-.single-product div.product .woocommerce-variation-add-to-cart {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+
 .single-product div.product .single_add_to_cart_button {
+  padding: 0.9em 2.2em;
   white-space: nowrap;
 }
 
-/* ----- Pastilles d'options (extension Variation Swatches) ----- */
+/* Pastilles d'options (extension Variation Swatches) : contour orange si sélectionnée */
 .single-product div.product .variable-items-wrapper {
-  gap: 8px;
-  margin: 8px 0 16px;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
 }
+
 .single-product
   div.product
   .variable-items-wrapper
   .variable-item.button-variable-item {
   min-width: 0;
-  height: 40px;
+  height: 2.5rem;
   margin: 0;
-  padding: 0 18px;
+  padding: 0 1.125rem;
   border: 2px solid var(--color-border-default);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--color-background-page);
   box-shadow: none;
   color: var(--color-text-primary);
-  font-family: "Nunito", sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 700;
-  transition:
-    border-color 0.2s,
-    background-color 0.2s;
+  transition: border-color 0.2s;
 }
+
 .single-product
   div.product
   .variable-items-wrapper
@@ -605,6 +681,7 @@ ul.products li.product .button {
   color: inherit;
   font: inherit;
 }
+
 .single-product
   div.product
   .variable-items-wrapper
@@ -612,15 +689,15 @@ ul.products li.product .button {
   border-color: var(--color-text-primary);
   box-shadow: none;
 }
+
 .single-product
   div.product
   .variable-items-wrapper
   .variable-item.button-variable-item.selected {
-  background: var(--color-brand-primary);
   border-color: var(--color-brand-primary);
-  color: var(--color-text-on-primary);
   box-shadow: none;
 }
+
 .single-product
   div.product
   .variable-items-wrapper
@@ -628,65 +705,293 @@ ul.products li.product .button {
   outline: 2px solid var(--color-text-primary);
   outline-offset: 2px;
 }
-.single-product div.product .variable-items-wrapper .variable-item.disabled {
-  opacity: 0.45;
+
+/* Onglets à l'horizontale, onglet actif souligné en orange */
+.single-product div.product .woocommerce-tabs ul.tabs {
+  display: flex;
+  gap: 2rem;
+  float: none;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  border-bottom: 2px solid var(--color-border-default);
 }
 
-/* ----- Allergènes et calories (itération 4) ----- */
-.dunkin-infos {
-  margin: 0 0 1.5rem;
+.single-product div.product .woocommerce-tabs ul.tabs li {
+  border: 0;
 }
-.dunkin-infos__titre {
-  margin: 0 0 0.5rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
-}
-.dunkin-infos__allergenes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0 0 0.75rem;
-  padding: 0;
-  list-style: none;
-}
-.dunkin-infos__allergenes li {
-  padding: 0.25rem 0.75rem;
-  border: 1px solid var(--color-border-default);
-  border-radius: 999px;
-  background: var(--color-background-section);
-  font-size: 0.875rem;
+
+.single-product div.product .woocommerce-tabs ul.tabs li a {
+  padding: 0.75rem 0;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.25rem;
   font-weight: 600;
-}
-.dunkin-infos__calories {
-  margin: 0;
-  font-size: 0.875rem;
   color: var(--color-text-secondary);
 }
 
-/* --- Mobile : tout sur une colonne --- */
+.single-product div.product .woocommerce-tabs ul.tabs li.active a {
+  box-shadow: inset 0 -3px 0 var(--color-brand-primary);
+  color: var(--color-text-primary);
+}
+
+.single-product div.product .woocommerce-tabs ul.tabs li.active::after {
+  display: none;
+}
+
+.single-product div.product .woocommerce-tabs .panel {
+  float: none;
+  width: 100%;
+}
+
+/* =========================================================
+   9. PANIER
+   ========================================================= */
+
+/* Fond beige sur toute la largeur (même technique que le hero) */
+.woocommerce-cart .entry-content {
+  margin: 0 calc(50% - 50vw);
+  padding: 3rem calc(50vw - 50%);
+  background: var(--color-background-section);
+}
+
+/* Fonds transparents, sauf les lignes produit en blanc */
+.woocommerce-cart table.cart {
+  background: transparent;
+}
+.woocommerce-cart table.cart th {
+  background: transparent;
+}
+.woocommerce-cart table.cart tbody tr td {
+  background: transparent;
+}
+
+.woocommerce-cart table.cart tr.cart_item td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--color-border-default);
+  background: var(--color-background-page);
+  vertical-align: middle;
+}
+
+/* Croix rose et image */
+.woocommerce-cart table.cart td.product-remove {
+  width: 3rem;
+}
+.woocommerce-cart table.cart td.product-thumbnail {
+  width: 6.5rem;
+}
+.woocommerce-cart table.cart td.product-thumbnail img {
+  width: 5rem;
+  max-width: none;
+}
+
+.woocommerce-cart table.cart a.remove::before {
+  content: "\f00d";
+  color: var(--color-brand-secondary);
+}
+
+/* Nom du produit + options en dessous */
+.woocommerce-cart table.cart td.product-name a {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.woocommerce-cart dl.variation {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.woocommerce-cart dl.variation dt {
+  display: inline;
+  float: none;
+  margin: 0 0.25rem 0 0;
+  font-weight: 400;
+}
+.woocommerce-cart dl.variation dd {
+  display: inline;
+  float: none;
+  margin: 0 0.25rem 0 0;
+  font-weight: 400;
+}
+.woocommerce-cart dl.variation dd p {
+  display: inline;
+  float: none;
+  margin: 0 0.25rem 0 0;
+  font-weight: 400;
+}
+
+/* Quantité et code promo en pastille */
+.woocommerce-cart table.cart .qty {
+  height: 2.75rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+  background: var(--color-background-page);
+  box-shadow: none;
+}
+.woocommerce-cart table.cart .coupon .input-text {
+  height: 2.75rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+  background: var(--color-background-page);
+  box-shadow: none;
+}
+
+.woocommerce-cart table.cart .qty {
+  width: 5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.woocommerce-cart table.cart .coupon .input-text {
+  width: 14rem;
+  padding: 0 1rem;
+}
+
+/* Boutons « Appliquer » et « Mettre à jour » en contour */
+.woocommerce-cart table.cart td.actions {
+  padding: 1.5rem 0;
+}
+
+.woocommerce-cart table.cart td.actions .button {
+  border: 2px solid var(--color-text-primary);
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.woocommerce-cart table.cart td.actions .button:hover {
+  background: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Cadre « Total panier » */
+.woocommerce-cart .cart_totals {
+  padding: 1.5rem;
+  border: 3px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background: var(--color-background-page);
+}
+
+.woocommerce-cart .cart_totals table.shop_table tr th {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-border-default);
+  background: transparent;
+}
+.woocommerce-cart .cart_totals table.shop_table tr td {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-border-default);
+  background: transparent;
+}
+
+.woocommerce-cart .cart_totals .order-total .amount {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.woocommerce-cart #shipping_method input {
+  accent-color: var(--color-brand-secondary);
+}
+
+.woocommerce-cart .woocommerce-shipping-destination,
+.woocommerce-cart .woocommerce-shipping-calculator {
+  display: none;
+}
+
+.woocommerce-cart .checkout-button {
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   10. MOBILE
+   ========================================================= */
 @media (max-width: 768px) {
+  /* Accueil : tout sur une colonne */
   .dunkin-hero {
     grid-template-columns: 1fr;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .dunkin-etapes__liste {
     grid-template-columns: 1fr;
   }
+
+  /* Boutique : 2 colonnes, boutons pleine largeur */
   .site-main ul.products {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 0.75rem;
   }
 
   .site-main ul.products li.product {
-    padding: 12px;
+    padding: 0.75rem;
   }
 
   ul.products li.product .button {
     align-self: stretch;
-    text-align: center;
     padding: 0.6em 0.5em;
     font-size: 0.8rem;
+    text-align: center;
+  }
+
+  /* Panier : chaque produit devient une carte */
+  .woocommerce-cart table.cart tr.cart_item {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr auto;
+    grid-template-areas:
+      "img nom suppr"
+      "img qte total";
+    gap: 0.75rem 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 2px solid var(--color-border-default);
+    border-radius: var(--radius-l);
+    background: var(--color-background-page);
+  }
+
+  .woocommerce-cart table.cart tr.cart_item td {
+    display: block;
+    width: auto;
+    padding: 0;
+    border: 0;
+    text-align: left;
+  }
+
+  .woocommerce-cart table.cart tr.cart_item td::before {
+    display: none;
+  }
+  .woocommerce-cart table.cart td.product-thumbnail {
+    display: block;
+    grid-area: img;
+  }
+  .woocommerce-cart table.cart td.product-name {
+    grid-area: nom;
+  }
+  .woocommerce-cart table.cart td.product-remove {
+    grid-area: suppr;
+  }
+  .woocommerce-cart table.cart td.product-quantity {
+    grid-area: qte;
+  }
+  .woocommerce-cart table.cart td.product-subtotal {
+    grid-area: total;
+    font-weight: 700;
+  }
+  .woocommerce-cart table.cart td.product-price {
+    display: none;
+  }
+  .woocommerce-cart table.cart td.product-name a {
+    font-size: 1.15rem;
+  }
+
+  /* Code promo et bouton sur la même ligne */
+  .woocommerce-cart table.cart .coupon {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .woocommerce-cart table.cart .coupon .input-text {
+    flex: 1;
+    width: auto;
   }
 }

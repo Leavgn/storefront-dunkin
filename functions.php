@@ -166,3 +166,15 @@ add_action( 'woocommerce_single_product_summary', function () {
 	}
 	echo '</div>';
 }, 7 );
+
+// Itération 5 : panier
+// « Expédition » devient « Réception » (vocabulaire du click & collect)
+add_filter( 'woocommerce_shipping_package_name', function () {
+	return 'Réception';
+} );
+
+// Nom du produit seul, les options s'affichent en dessous
+add_filter( 'woocommerce_product_variation_get_name', function ( $name, $variation ) {
+	$parent = wc_get_product( $variation->get_parent_id() );
+	return $parent ? $parent->get_name() : $name;
+}, 10, 2 );
