@@ -199,3 +199,8 @@ add_filter( 'storefront_credit_link', '__return_false' );
 add_filter( 'storefront_copyright_text', function () {
 	return '© ' . date( 'Y' ) . " Dunkin' Click & Collect · Projet étudiant, site non officiel";
 } );
+
+// Itération 7 : phrase d'accroche dans le formulaire d'inscription
+add_action( 'woocommerce_register_form', function () {
+	echo '<p class="dunkin-inscription__texte">Avec un compte, tu retrouves tes commandes et tes factures, et tu recommandes en deux clics.</p>';
+}, 15 );

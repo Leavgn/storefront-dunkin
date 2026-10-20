@@ -91,6 +91,16 @@ a {
   overflow-x: clip;
 }
 
+/* Titres des pages alignés à gauche, comme sur les maquettes */
+body.page .entry-header {
+  margin-bottom: 0;
+  padding-bottom: 1.5rem;
+  text-align: left;
+}
+
+body.page .entry-title {
+  text-align: left;
+}
 /* =========================================================
    3. BOUTONS
    ========================================================= */
@@ -273,6 +283,10 @@ input[type="submit"]:hover {
 
 .site-footer h4 {
   color: var(--color-text-primary);
+}
+
+.site-footer .wp-block-image img {
+  max-width: 12rem;
 }
 
 /* =========================================================
@@ -927,11 +941,279 @@ ul.products li.product .button {
 .site-footer .site-info {
   text-align: center;
 }
+
 /* =========================================================
-   10. MOBILE
+   11. MON COMPTE
+   ========================================================= */
+
+/* Fond beige sur toute la largeur (même technique que le hero) */
+.woocommerce-account .entry-content {
+  margin: 0 calc(50% - 50vw);
+  padding: 3rem calc(50vw - 50%);
+  background: var(--color-background-section);
+}
+
+/* Menu du compte : une carte avec des liens arrondis */
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  margin: 0;
+  padding: 1rem;
+  border: 3px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background: var(--color-background-page);
+  list-style: none;
+}
+
+.woocommerce-account .woocommerce .woocommerce-MyAccount-navigation ul li {
+  border: 0;
+}
+
+/* Sélecteur long : il doit battre celui de Storefront (4 classes), le nôtre en a 5 */
+.woocommerce-account
+  .hentry
+  .entry-content
+  .woocommerce-MyAccount-navigation
+  ul
+  li.woocommerce-MyAccount-navigation-link
+  a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-m);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Storefront ajoute des icônes à droite des liens : on les retire */
+.woocommerce-account .woocommerce-MyAccount-navigation ul li a::before {
+  display: none;
+}
+
+/* Lien de la page en cours : fond orange */
+.woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active a {
+  background: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+}
+
+/* Titre et introduction du tableau de bord */
+.woocommerce-MyAccount-content .dunkin-compte__titre {
+  margin-bottom: 0.5rem;
+  font-size: 2.1rem;
+}
+
+.dunkin-compte__intro {
+  margin-bottom: 2rem;
+  color: var(--color-text-secondary);
+}
+
+/* Cartes raccourcis : 3 colonnes */
+.dunkin-raccourcis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.woocommerce-account
+  .entry-content
+  .woocommerce-MyAccount-content
+  a.dunkin-raccourci {
+  display: block;
+  padding: 1.6rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background: var(--color-background-page);
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.woocommerce-account
+  .entry-content
+  .woocommerce-MyAccount-content
+  a.dunkin-raccourci:hover {
+  border-color: var(--color-brand-secondary);
+  transform: translateY(-0.25rem);
+}
+
+.dunkin-raccourci h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+}
+
+.dunkin-raccourci p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.dunkin-raccourci span {
+  color: var(--color-brand-secondary);
+  font-weight: 800;
+}
+
+/* Carte « Dernière commande » */
+.dunkin-derniere {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.6rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background: var(--color-background-page);
+}
+
+.dunkin-derniere h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.4rem;
+}
+
+.dunkin-derniere p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+/* Bouton en contour (réutilisable ailleurs sur le site) */
+.dunkin-button--contour {
+  border: 2px solid var(--color-text-primary);
+  background-color: transparent;
+  color: var(--color-text-primary);
+}
+
+.dunkin-button--contour:hover {
+  border-color: var(--color-text-primary);
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Lien « Déconnexion » sous les cartes : caché sur ordinateur (il est déjà dans le menu) */
+.dunkin-deconnexion {
+  display: none;
+}
+
+/* Formulaires de connexion et d'inscription : deux cartes côte à côte */
+#customer_login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+#customer_login::before {
+  display: none;
+}
+
+#customer_login::after {
+  display: none;
+}
+
+.woocommerce-account .u-columns#customer_login .u-column1 {
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 2.5rem;
+  border: 3px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background: var(--color-background-page);
+}
+
+.woocommerce-account .u-columns#customer_login .u-column2 {
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 2.5rem;
+  border: 3px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background: var(--color-background-page);
+}
+
+#customer_login h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+#customer_login form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#customer_login label {
+  font-weight: 700;
+}
+
+/* Astérisque des champs obligatoires en rose */
+#customer_login .required {
+  color: var(--color-brand-secondary);
+  text-decoration: none;
+}
+
+/* Champs en pilule */
+#customer_login .input-text {
+  height: 3.25rem;
+  padding: 0 1.25rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+  background: var(--color-background-page);
+  box-shadow: none;
+}
+
+/* Bouton « Se connecter » orange, pleine largeur */
+#customer_login .woocommerce-form-login__submit {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Bouton « S'inscrire » en contour : un seul bouton orange par écran */
+#customer_login .woocommerce-form-register__submit {
+  width: 100%;
+  border: 2px solid var(--color-text-primary);
+  background-color: transparent;
+  color: var(--color-text-primary);
+}
+
+#customer_login .woocommerce-form-register__submit:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Textes sous l'inscription */
+.dunkin-inscription__texte {
+  color: var(--color-text-secondary);
+}
+
+#customer_login .woocommerce-privacy-policy-text {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* Le champ mot de passe sert de repère pour placer l'œil */
+#customer_login .password-input {
+  position: relative;
+  display: block;
+}
+
+/* Bouton « afficher le mot de passe » : centré verticalement à droite du champ */
+#customer_login .show-password-input {
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  padding: 0.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  transform: translateY(-50%);
+}
+
+#customer_login .show-password-input:hover {
+  background: transparent;
+  color: var(--color-text-primary);
+  transform: translateY(-50%);
+}
+/* =========================================================
+   12. MOBILE
    ========================================================= */
 @media (max-width: 768px) {
-  /* Accueil : tout sur une colonne */
+  /* --- Accueil : tout sur une colonne --- */
   .dunkin-hero {
     grid-template-columns: 1fr;
     padding-top: 2.5rem;
@@ -942,7 +1224,7 @@ ul.products li.product .button {
     grid-template-columns: 1fr;
   }
 
-  /* Boutique : 2 colonnes, boutons pleine largeur */
+  /* --- Boutique : 2 colonnes, boutons pleine largeur --- */
   .site-main ul.products {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
@@ -959,7 +1241,7 @@ ul.products li.product .button {
     text-align: center;
   }
 
-  /* Panier : chaque produit devient une carte */
+  /* --- Panier : chaque produit devient une carte --- */
   .woocommerce-cart table.cart tr.cart_item {
     display: grid;
     grid-template-columns: 4.5rem 1fr auto;
@@ -986,37 +1268,161 @@ ul.products li.product .button {
   .woocommerce-cart table.cart tr.cart_item td::before {
     display: none;
   }
+
   .woocommerce-cart table.cart td.product-thumbnail {
     display: block;
     grid-area: img;
   }
+
   .woocommerce-cart table.cart td.product-name {
     grid-area: nom;
   }
+
   .woocommerce-cart table.cart td.product-remove {
     grid-area: suppr;
   }
+
   .woocommerce-cart table.cart td.product-quantity {
     grid-area: qte;
   }
+
   .woocommerce-cart table.cart td.product-subtotal {
     grid-area: total;
     font-weight: 700;
   }
+
   .woocommerce-cart table.cart td.product-price {
     display: none;
   }
+
   .woocommerce-cart table.cart td.product-name a {
     font-size: 1.15rem;
   }
 
-  /* Code promo et bouton sur la même ligne */
   .woocommerce-cart table.cart .coupon {
     display: flex;
     gap: 0.5rem;
   }
+
   .woocommerce-cart table.cart .coupon .input-text {
     flex: 1;
     width: auto;
+  }
+
+  /* --- Pied de page : logo en haut, puis 2 colonnes --- */
+  .site-footer .footer-widgets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .site-footer .footer-widget-1 {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer .wp-block-image img {
+    max-width: 9rem;
+  }
+
+  /* --- Mon compte : menu en pastilles qui défilent --- */
+  .woocommerce-account .woocommerce-MyAccount-navigation {
+    margin-bottom: 1.5rem;
+  }
+
+  .woocommerce-account .woocommerce-MyAccount-navigation ul {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0 0 0.5rem;
+    border: 0;
+    background: transparent;
+    scrollbar-width: none;
+  }
+
+  .woocommerce-account .woocommerce-MyAccount-navigation ul li {
+    flex: none;
+  }
+
+  .woocommerce-account
+    .hentry
+    .entry-content
+    .woocommerce-MyAccount-navigation
+    ul
+    li.woocommerce-MyAccount-navigation-link
+    a {
+    padding: 0.6rem 1.1rem;
+    border: 2px solid var(--color-border-default);
+    background: var(--color-background-page);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* --- Mon compte : tableau de bord --- */
+  .woocommerce-MyAccount-content .dunkin-compte__titre {
+    font-size: 1.6rem;
+  }
+
+  .dunkin-raccourcis {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .woocommerce-account
+    .entry-content
+    .woocommerce-MyAccount-content
+    a.dunkin-raccourci {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1rem;
+    align-items: center;
+    padding: 1.1rem 1.25rem;
+  }
+
+  .dunkin-raccourci h3 {
+    grid-column: 1;
+    margin-bottom: 0.2rem;
+    font-size: 1.25rem;
+  }
+
+  .dunkin-raccourci p {
+    grid-column: 1;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .dunkin-raccourci span {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .dunkin-derniere {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dunkin-derniere .button {
+    text-align: center;
+  }
+
+  .dunkin-deconnexion {
+    display: block;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  /* --- Mon compte : formulaires empilés --- */
+  #customer_login {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .woocommerce-account .u-columns#customer_login .u-column1 {
+    padding: 1.5rem;
+  }
+
+  .woocommerce-account .u-columns#customer_login .u-column2 {
+    padding: 1.5rem;
+  }
+
+  #customer_login h2 {
+    font-size: 1.6rem;
   }
 }
