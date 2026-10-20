@@ -204,3 +204,26 @@ add_filter( 'storefront_copyright_text', function () {
 add_action( 'woocommerce_register_form', function () {
 	echo '<p class="dunkin-inscription__texte">Avec un compte, tu retrouves tes commandes et tes factures, et tu recommandes en deux clics.</p>';
 }, 15 );
+
+// IT-8 : ajoute emails.css aux styles des e-mails WooCommerce
+add_filter( 'woocommerce_email_styles', function ( $css ) {
+	return $css . file_get_contents( get_stylesheet_directory() . '/emails.css' );
+} );
+
+// IT-8 : instructions de retrait dans les e-mails client (retrait en boutique uniquement)
+add_action( 'woocommerce_email_after_order_table', function ( $order, $sent_to_admin, $plain_text ) {
+	if ( $sent_to_admin || ! $order->has_shipping_method( 'local_pickup' ) ) {
+		return;
+	}
+	$instructions = function_exists( 'get_field' ) ? get_field( 'instructions_pour_le_retrait', 'option' ) : '';
+	if ( ! $instructions ) {
+		return;
+	}
+	if ( $plain_text ) {
+		echo "\nINSTRUCTIONS POUR LE RETRAIT\n" . wp_strip_all_tags( $instructions ) . "\n\n";
+		return;
+	}
+	echo '<div class="dunkin-retrait-email"><h2>Instructions pour le retrait</h2>';
+	echo wp_kses_post( wpautop( $instructions ) );
+	echo '</div>';
+}, 10, 3 );

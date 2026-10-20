@@ -1,0 +1,31 @@
+/* E-mails WooCommerce (les px sont voulus, les rem passent mal dans les messageries) */
+
+#template_header_image img {
+  max-width: 160px;
+}
+
+#header_wrapper h1 {
+  color: #212529;
+  font-family: "Fredoka", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+h2 {
+  color: #c25400;
+}
+
+.dunkin-retrait-email {
+  margin: 24px 0;
+  padding: 16px 20px;
+  border-left: 4px solid #ef6a00;
+  background-color: #f8f4f1;
+}
+
+.dunkin-retrait-email h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.dunkin-retrait-email p {
+  margin: 0;
+}
