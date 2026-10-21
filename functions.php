@@ -359,3 +359,13 @@ add_filter( 'woocommerce_valid_order_statuses_for_cancel', function ( $etats ) {
 	$etats[] = 'processing';
 	return $etats;
 } );
+
+// IT-10 : libellé du code promo dans les totaux, en majuscules
+add_filter( 'woocommerce_cart_totals_coupon_label', function ( $label, $coupon ) {
+	return 'Code ' . strtoupper( $coupon->get_code() );
+}, 10, 2 );
+
+// IT-10 : lien « Retirer » sans crochets
+add_filter( 'woocommerce_cart_totals_coupon_html', function ( $html ) {
+	return str_replace( '[Enlever]', 'Retirer', $html );
+} );

@@ -123,6 +123,32 @@ body.page .entry-header {
 body.page .entry-title {
   text-align: left;
 }
+
+/* Messages de succès et d'erreur : même style que les messages d'info */
+body .woocommerce-message {
+  border-left: 4px solid var(--color-success);
+  background-color: var(--color-background-page);
+  color: var(--color-text-primary);
+}
+
+body .woocommerce-message::before {
+  color: var(--color-success);
+}
+
+body .woocommerce-message .button {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+body .woocommerce-error {
+  border-left: 4px solid var(--color-error);
+  background-color: var(--color-background-page);
+  color: var(--color-text-primary);
+}
+
+body .woocommerce-error::before {
+  color: var(--color-error);
+}
 /* =========================================================
    3. BOUTONS
    ========================================================= */
@@ -938,6 +964,23 @@ ul.products li.product .button {
   font-size: 1.1rem;
 }
 
+/* Ligne du code promo : remise en vert, lien « Retirer » en rose */
+.woocommerce-cart .cart_totals tr.cart-discount td {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.woocommerce-cart .cart_totals .woocommerce-remove-coupon {
+  margin-left: 0.5rem;
+  color: var(--color-brand-secondary);
+  font-size: 0.9rem;
+}
+
+/* Message d'erreur du code promo : notre rouge, plus contrasté que celui de Storefront */
+.woocommerce-cart table.cart .coupon .coupon-error-notice {
+  color: var(--color-error);
+  font-weight: 600;
+}
 /* =========================================================
    10. COMMANDE
    ========================================================= */
@@ -962,6 +1005,18 @@ ul.products li.product .button {
 /* Ligne de copyright centrée, comme sur la maquette */
 .site-footer .site-info {
   text-align: center;
+}
+
+/* Ligne du code promo dans le récapitulatif de commande */
+.woocommerce-checkout-review-order-table tr.cart-discount td {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.woocommerce-checkout-review-order-table .woocommerce-remove-coupon {
+  margin-left: 0.5rem;
+  color: var(--color-brand-secondary);
+  font-size: 0.9rem;
 }
 
 /* =========================================================
@@ -1880,5 +1935,33 @@ ul.products li.product .button {
     left: calc(1.5rem - 2px);
     width: 4px;
     height: calc(100% + 1.25rem);
+  }
+
+  .woocommerce-cart table.cart tr.cart_item td.product-price {
+    display: none;
+  }
+
+  .woocommerce-cart table.cart .coupon {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .woocommerce-cart table.cart .coupon .input-text {
+    width: 100%;
+  }
+
+  .woocommerce-cart table.cart td.actions .button {
+    width: 100%;
+  }
+
+  .woocommerce-cart .cart_totals tr.cart-discount td::before {
+    color: var(--color-text-primary);
+  }
+
+  .woocommerce-cart table.cart td.actions .coupon .input-text {
+    flex: none;
+    width: 100%;
+    height: 2.75rem;
   }
 }
