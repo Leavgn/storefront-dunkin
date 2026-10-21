@@ -227,3 +227,135 @@ add_action( 'woocommerce_email_after_order_table', function ( $order, $sent_to_a
 	echo wp_kses_post( wpautop( $instructions ) );
 	echo '</div>';
 }, 10, 3 );
+
+// IT-9 : nouvel état de commande « Prête à retirer »
+add_action( 'init', function () {
+	register_post_status( 'wc-prete', array(
+		'label'                     => 'Prête à retirer',
+		'public'                    => true,
+		'show_in_admin_status_list' => true,
+		'show_in_admin_all_list'    => true,
+		'exclude_from_search'       => false,
+		'label_count'               => _n_noop( 'Prête à retirer <span class="count">(%s)</span>', 'Prêtes à retirer <span class="count">(%s)</span>' ),
+	) );
+} );
+
+// IT-9 : ajoute « Prête à retirer » juste après « En cours » dans la liste des états
+add_filter( 'wc_order_statuses', function ( $etats ) {
+	$nouveaux = array();
+	foreach ( $etats as $cle => $nom ) {
+		if ( 'wc-processing' === $cle ) {   // ← nouvelle ligne
+			$nom = 'En préparation';          // ← nouvelle ligne
+		}                                   // ← nouvelle ligne
+		$nouveaux[ $cle ] = $nom;
+		if ( 'wc-processing' === $cle ) {
+			$nouveaux['wc-prete'] = 'Prête à retirer';
+		}
+	}
+	return $nouveaux;
+} );
+
+// IT-9 : couleur de l'état « Prête à retirer » dans la liste des commandes (admin)
+add_action( 'admin_head', function () {
+	echo '<style>.order-status.status-prete { background: #E8F4EB; color: #1B7A36; }</style>';
+} );
+
+// IT-9 : enregistre l'e-mail « Ta commande est prête ! » auprès de WooCommerce
+add_filter( 'woocommerce_email_classes', function ( $emails ) {
+	require_once get_stylesheet_directory() . '/class-dunkin-email-prete.php';
+	$emails['Dunkin_Email_Prete'] = new Dunkin_Email_Prete();
+	return $emails;
+} );
+
+// IT-9 : déclenche les e-mails quand une commande passe à « Prête à retirer »
+add_filter( 'woocommerce_email_actions', function ( $actions ) {
+	$actions[] = 'woocommerce_order_status_prete';
+	return $actions;
+} );
+
+// IT-9 : colonne « Réception » dans « Mes commandes », placée après la date
+add_filter( 'woocommerce_account_orders_columns', function ( $colonnes )  {
+	$nouvelles = array();
+	foreach ( $colonnes as $cle => $nom ) {
+		$nouvelles[ $cle ] = $nom;
+		if ( 'order-date' === $cle ) {
+			$nouvelles['dunkin-reception'] = 'Réception';
+		}
+	}
+	return $nouvelles;
+} );
+
+add_action( 'woocommerce_my_account_my_orders_column_dunkin-reception', function ( $order ) {
+	echo esc_html( $order->get_shipping_method() );
+} );
+
+// IT-9 : l'état de la commande affiché sous forme de pastille
+add_action( 'woocommerce_my_account_my_orders_column_order-status', function ( $order ) {
+	$etat = $order->get_status();
+	echo '<span class="dunkin-etat dunkin-etat--' . esc_attr( $etat ) . '">' . esc_html( wc_get_order_status_name( $etat ) ) . '</span>';
+} );
+
+// IT-9 : suivi de la commande en étapes sur la page « Voir la commande » (retrait uniquement)
+add_action( 'woocommerce_view_order', function ( $order_id ) {
+	$order = wc_get_order( $order_id );
+	if ( ! $order || ! $order->has_shipping_method( 'local_pickup' ) ) {
+		return;
+	}
+
+	// Position de chaque état dans le suivi : 0 = Reçue … 3 = Retirée
+	$positions = array(
+		'pending'    => 0,
+		'on-hold'    => 0,
+		'processing' => 1,
+		'prete'      => 2,
+		'completed'  => 3,
+	);
+	$etat = $order->get_status();
+	if ( ! isset( $positions[ $etat ] ) ) {
+		return; // commande annulée ou remboursée : pas de suivi
+	}
+	$actuelle = $positions[ $etat ];
+	$etapes   = array( 'Reçue', 'En préparation', 'Prête à retirer', 'Retirée' );
+
+	echo '<div class="dunkin-suivi">';
+	echo '<h2 class="dunkin-suivi__titre">Suivi de ta commande</h2>';
+	echo '<ol class="dunkin-suivi__etapes">';
+	foreach ( $etapes as $numero => $nom ) {
+		$attribut = '';
+		if ( $numero < $actuelle || 'completed' === $etat ) {
+			$classe   = 'faite';
+			$pastille = '✓';
+		} elseif ( $numero === $actuelle ) {
+			$classe   = 'en-cours';
+			$pastille = $numero + 1;
+			$attribut = ' aria-current="step"';
+		} else {
+			$classe   = 'a-venir';
+			$pastille = $numero + 1;
+		}
+		echo '<li class="dunkin-suivi__etape dunkin-suivi__etape--' . $classe . '"' . $attribut . '>';
+		echo '<span class="dunkin-suivi__pastille">' . $pastille . '</span>';
+		echo '<span class="dunkin-suivi__nom">' . esc_html( $nom ) . '</span>';
+		echo '</li>';
+	}
+	echo '</ol>';
+	echo '</div>';
+
+	// Quand la commande est prête : rappel des instructions de retrait
+	if ( 'prete' === $etat && function_exists( 'get_field' ) ) {
+		$instructions = get_field( 'instructions_pour_le_retrait', 'option' );
+		if ( $instructions ) {
+			echo '<div class="dunkin-retrait-compte">';
+			echo '<h3>Ta commande t\'attend !</h3>';
+			echo wp_kses_post( wpautop( $instructions ) );
+			echo '</div>';
+		}
+	}
+}, 5 );
+
+// IT-9 : le client peut annuler sa commande tant qu'elle n'est pas prête
+add_filter( 'woocommerce_valid_order_statuses_for_cancel', function ( $etats ) {
+	$etats[] = 'on-hold';
+	$etats[] = 'processing';
+	return $etats;
+} );

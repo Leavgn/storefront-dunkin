@@ -86,6 +86,28 @@ a {
   color: var(--color-text-primary);
 }
 
+body .woocommerce-info a {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+/* Lien et icône des messages  */
+body .woocommerce-info .button {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+body .woocommerce-info::before {
+  color: var(--color-brand-primary);
+}
+
+body .woocommerce-info .button:hover {
+  background-color: transparent;
+  color: var(--color-brand-secondary);
+  opacity: 1;
+  transform: none;
+}
+
 /* Empêche le défilement horizontal des sections pleine largeur */
 .site {
   overflow-x: clip;
@@ -1209,6 +1231,324 @@ ul.products li.product .button {
   color: var(--color-text-primary);
   transform: translateY(-50%);
 }
+
+/* Pastilles d'état des commandes (itération 9) */
+.dunkin-etat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dunkin-etat::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.dunkin-etat--on-hold {
+  border-color: var(--color-brand-primary);
+  background-color: var(--color-background-page);
+  color: var(--color-text-brand);
+}
+
+.dunkin-etat--pending {
+  border-color: var(--color-brand-primary);
+  background-color: var(--color-background-page);
+  color: var(--color-text-brand);
+}
+
+.dunkin-etat--processing {
+  border-color: var(--color-brand-secondary);
+  background-color: var(--color-background-page);
+  color: var(--pink-700);
+}
+
+.dunkin-etat--prete {
+  border-color: var(--color-success);
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+}
+
+.dunkin-etat--completed {
+  border-color: var(--color-border-default);
+  background-color: var(--color-background-section);
+  color: var(--color-text-secondary);
+}
+
+.dunkin-etat--cancelled {
+  border-color: var(--color-error);
+  background-color: var(--color-background-page);
+  color: var(--color-error);
+}
+
+/* Tableau « Mes commandes » : une carte blanche */
+.woocommerce-account table.my_account_orders {
+  border: 2px solid var(--color-border-default);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+  overflow: hidden;
+}
+
+.woocommerce-account table.my_account_orders thead th {
+  padding: 1.25rem 1rem;
+  border-bottom: 2px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+  font-weight: 800;
+}
+
+/* Sélecteurs longs : ils doivent battre les fonds gris de Storefront */
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  table.my_account_orders
+  tbody
+  tr
+  td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+  vertical-align: middle;
+}
+
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  table.my_account_orders
+  tbody
+  tr
+  th {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+  vertical-align: middle;
+}
+
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  table.my_account_orders
+  tbody
+  tr:last-child
+  td {
+  border-bottom: 0;
+}
+
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  table.my_account_orders
+  tbody
+  tr:last-child
+  th {
+  border-bottom: 0;
+}
+
+/* Numéro de commande */
+.woocommerce-account
+  table.my_account_orders
+  .woocommerce-orders-table__cell-order-number
+  a {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Bouton « Voir » en contour, sans l'icône œil de Storefront */
+.woocommerce-account table.my_account_orders .button {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--color-text-primary);
+  background-color: transparent;
+  color: var(--color-text-primary);
+}
+
+.woocommerce-account table.my_account_orders .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+.woocommerce-account table.my_account_orders .button.view::after {
+  display: none;
+}
+
+/* Suivi de la commande en étapes (itération 9) */
+.dunkin-suivi {
+  margin-bottom: 1.5rem;
+  padding: 2rem 1.75rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+}
+
+.woocommerce-MyAccount-content .dunkin-suivi__titre {
+  margin-bottom: 1.75rem;
+  font-size: 1.4rem;
+}
+
+.dunkin-suivi__etapes {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dunkin-suivi__etape {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Trait qui relie chaque étape à la précédente */
+.dunkin-suivi__etape::before {
+  content: "";
+  position: absolute;
+  top: calc(1.5rem - 2px);
+  right: 50%;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-border-default);
+}
+
+.dunkin-suivi__etape:first-child::before {
+  display: none;
+}
+
+.dunkin-suivi__etape--faite::before {
+  background-color: var(--color-brand-primary);
+}
+
+.dunkin-suivi__etape--en-cours::before {
+  background-color: var(--color-brand-primary);
+}
+
+.dunkin-suivi__pastille {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid var(--color-border-default);
+  border-radius: 50%;
+  background-color: var(--color-background-page);
+  color: var(--color-text-secondary);
+  font-weight: 800;
+}
+
+.dunkin-suivi__etape--faite .dunkin-suivi__pastille {
+  border-color: var(--color-brand-primary);
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
+}
+
+.dunkin-suivi__etape--en-cours .dunkin-suivi__pastille {
+  border-color: var(--color-brand-primary);
+  color: var(--color-text-primary);
+  box-shadow: 0 0 0 0.375rem var(--color-background-section);
+}
+
+.dunkin-suivi__etape--a-venir {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+/* Rappel des instructions quand la commande est prête */
+.dunkin-retrait-compte {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  border-left: 4px solid var(--color-brand-primary);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  background-color: var(--color-background-page);
+}
+
+.dunkin-retrait-compte h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--color-text-brand);
+}
+
+.dunkin-retrait-compte p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+/* Détails de la commande : même carte blanche que « Mes commandes » */
+.woocommerce-account .woocommerce-order-details__title {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.woocommerce-account table.order_details {
+  border: 2px solid var(--color-border-default);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+  overflow: hidden;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content table.order_details tr th {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+}
+
+.woocommerce-account .woocommerce-MyAccount-content table.order_details tr td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+}
+
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  table.order_details
+  tfoot
+  tr:last-child
+  th {
+  border-bottom: 0;
+}
+
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  table.order_details
+  tfoot
+  tr:last-child
+  td {
+  border-bottom: 0;
+}
+
+.woocommerce-account table.order_details .product-name a {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Adresse de facturation en carte */
+.woocommerce-account .woocommerce-customer-details .woocommerce-column__title {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.woocommerce-account .woocommerce-customer-details address {
+  padding: 1.5rem 1.75rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+  font-style: normal;
+}
+
 /* =========================================================
    12. MOBILE
    ========================================================= */
@@ -1424,5 +1764,121 @@ ul.products li.product .button {
 
   #customer_login h2 {
     font-size: 1.6rem;
+  }
+
+  /* --- Mon compte : chaque commande devient une carte --- */
+  .woocommerce-account table.my_account_orders {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    overflow: visible;
+  }
+
+  .woocommerce-account table.my_account_orders tbody tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "num etat"
+      "date total"
+      "recep actions";
+    gap: 0.5rem 1rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 1.1rem 1.25rem;
+    border: 2px solid var(--color-border-default);
+    border-radius: var(--radius-l);
+    background-color: var(--color-background-page);
+  }
+
+  .woocommerce-account
+    .woocommerce-MyAccount-content
+    table.my_account_orders
+    tbody
+    tr
+    td {
+    display: block;
+    padding: 0;
+    border: 0;
+    text-align: left;
+  }
+
+  .woocommerce-account
+    .woocommerce-MyAccount-content
+    table.my_account_orders
+    tbody
+    tr
+    th {
+    display: block;
+    padding: 0;
+    border: 0;
+    text-align: left;
+  }
+
+  /* On retire les étiquettes « Date : », « Total : »… ajoutées par Storefront */
+  .woocommerce-account
+    .woocommerce-MyAccount-content
+    table.my_account_orders
+    tbody
+    tr
+    td::before {
+    display: none;
+  }
+
+  /* Place de chaque information dans la carte */
+  .woocommerce-account .woocommerce-orders-table__cell-order-number {
+    grid-area: num;
+    font-size: 1.2rem;
+  }
+
+  .woocommerce-account .woocommerce-orders-table__cell-order-status {
+    grid-area: etat;
+  }
+
+  .woocommerce-account .woocommerce-orders-table__cell-order-date {
+    grid-area: date;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .woocommerce-account .woocommerce-orders-table__cell-order-total {
+    grid-area: total;
+    justify-self: end;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .woocommerce-account .woocommerce-orders-table__cell-dunkin-reception {
+    grid-area: recep;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .woocommerce-account .woocommerce-orders-table__cell-order-actions {
+    grid-area: actions;
+    justify-self: end;
+  }
+
+  /* --- Mon compte : suivi de commande à la verticale --- */
+  .dunkin-suivi {
+    padding: 1.25rem;
+  }
+
+  .dunkin-suivi__etapes {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .dunkin-suivi__etape {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .dunkin-suivi__etape::before {
+    top: auto;
+    right: auto;
+    bottom: 50%;
+    left: calc(1.5rem - 2px);
+    width: 4px;
+    height: calc(100% + 1.25rem);
   }
 }
