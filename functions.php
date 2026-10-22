@@ -373,9 +373,15 @@ add_filter( 'woocommerce_cart_totals_coupon_html', function ( $html ) {
 // IT-11 : « Notre équipe » au lieu de « Membres » dans le fil d'Ariane
 add_filter( 'woocommerce_get_breadcrumb', function ( $miettes ) {
 	foreach ( $miettes as $i => $miette ) {
-		if ( 'Membres' === $miette[0] ) {
+				if ( in_array( $miette[0], array( 'Membres', 'Membre' ), true ) ) {
 			$miettes[ $i ][0] = 'Notre équipe';
 		}
 	}
 	return $miettes;
+} );
+
+// IT-12 : la gamme du produit sur sa fiche, avec un lien vers la page de la gamme
+add_action( 'woocommerce_product_meta_end', function () {
+	global $product;
+	echo get_the_term_list( $product->get_id(), 'gamme', '<span class="posted_in">Gamme : ', ', ', '</span>' );
 } );
