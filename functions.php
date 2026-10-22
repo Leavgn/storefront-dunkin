@@ -369,3 +369,13 @@ add_filter( 'woocommerce_cart_totals_coupon_label', function ( $label, $coupon )
 add_filter( 'woocommerce_cart_totals_coupon_html', function ( $html ) {
 	return str_replace( '[Enlever]', 'Retirer', $html );
 } );
+
+// IT-11 : « Notre équipe » au lieu de « Membres » dans le fil d'Ariane
+add_filter( 'woocommerce_get_breadcrumb', function ( $miettes ) {
+	foreach ( $miettes as $i => $miette ) {
+		if ( 'Membres' === $miette[0] ) {
+			$miettes[ $i ][0] = 'Notre équipe';
+		}
+	}
+	return $miettes;
+} );
