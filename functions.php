@@ -385,3 +385,12 @@ add_action( 'woocommerce_product_meta_end', function () {
 	global $product;
 	echo get_the_term_list( $product->get_id(), 'gamme', '<span class="posted_in">Gamme : ', ', ', '</span>' );
 } );
+
+// IT-13 : titres des blocs de suggestions
+add_filter( 'woocommerce_product_upsells_products_heading', function () {
+	return 'Ça va bien avec…';
+} );
+
+add_filter( 'woocommerce_product_cross_sells_products_heading', function () {
+	return 'Envie d\'ajouter… ?';
+} );

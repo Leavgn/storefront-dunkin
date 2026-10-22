@@ -852,6 +852,46 @@ body.storefront-full-width-content
   width: 100%;
 }
 
+/* Suggestions « Ça va bien avec… » (itération 13) : une carte beige arrondie
+   (Storefront met overflow: hidden sur le produit, donc pas de pleine largeur ici) */
+.single-product .up-sells {
+  clear: both;
+  margin-top: 3rem;
+  padding: 2.5rem;
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-section);
+}
+
+/* Titre à gauche : il faut battre la règle de Storefront, qui a 3 « classes » */
+body.single-product .up-sells > h2:first-child {
+  margin-bottom: 1.5rem;
+  font-size: 2.1rem;
+  text-align: left;
+}
+
+/* Boutons en contour : on découvre le produit avant de l'ajouter */
+.single-product .up-sells ul.products li.product .button {
+  border: 2px solid var(--color-text-primary);
+  background-color: transparent;
+  color: var(--color-text-primary);
+}
+
+.single-product .up-sells ul.products li.product .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Espace entre « Ça va bien avec… » et « Produits similaires » */
+.single-product .up-sells {
+  margin-bottom: 3rem;
+}
+
+/* « Produits similaires » (ajouté par WooCommerce) : titre à gauche comme le reste */
+body.single-product .related.products > h2:first-child {
+  margin-bottom: 1.5rem;
+  font-size: 2.1rem;
+  text-align: left;
+}
 /* =========================================================
    9. PANIER
    ========================================================= */
@@ -1028,6 +1068,24 @@ body.storefront-full-width-content
 .woocommerce-cart table.cart .coupon .coupon-error-notice {
   color: var(--color-error);
   font-weight: 600;
+}
+
+/* Suggestions « Envie d'ajouter… ? » dans le panier (itération 13) */
+.woocommerce-cart .cross-sells h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.9rem;
+}
+
+/* Suggestions sur toute la largeur, au-dessus du total
+   (Storefront les met dans une colonne trop étroite pour nos cartes) */
+.woocommerce-cart .cart-collaterals .cross-sells {
+  float: none;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.woocommerce-cart .cart-collaterals .cross-sells ul.products {
+  grid-template-columns: repeat(4, 1fr);
 }
 /* =========================================================
    10. COMMANDE
@@ -2236,5 +2294,26 @@ body.storefront-full-width-content
 
   .dunkin-fiche__nom {
     font-size: 2.2rem;
+  }
+
+  /* --- Suggestions de la fiche produit : carrousel qui défile au doigt --- */
+  .single-product .up-sells ul.products {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .single-product .up-sells ul.products li.product {
+    flex: 0 0 12.5rem;
+    scroll-snap-align: start;
+  }
+
+  .single-product .up-sells {
+    padding: 1.5rem 0 1.5rem 1.25rem;
+  }
+
+  .woocommerce-cart .cart-collaterals .cross-sells ul.products {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
