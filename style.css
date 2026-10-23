@@ -1125,6 +1125,149 @@ body.single-product .related.products > h2:first-child {
   font-size: 0.9rem;
 }
 
+/* Page « Commande reçue » : mêmes cartes blanches que dans « Mon compte » */
+
+/* Message de remerciement en vert, comme nos messages de succès */
+.woocommerce-order-received .woocommerce-thankyou-order-received {
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--color-success);
+  background-color: var(--color-background-page);
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Récapitulatif (numéro, date, total…) : une carte, sans le zigzag de Storefront */
+.woocommerce-order-received ul.order_details {
+  padding: 0.5rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+}
+
+.woocommerce-order-received ul.order_details::before {
+  display: none;
+}
+
+.woocommerce-order-received ul.order_details::after {
+  display: none;
+}
+
+/* Tableau « Détails de la commande » */
+.woocommerce-order-received table.order_details {
+  border: 2px solid var(--color-border-default);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+  overflow: hidden;
+}
+
+.woocommerce-order-received .woocommerce-order table.order_details tr th {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+}
+
+.woocommerce-order-received .woocommerce-order table.order_details tr td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+}
+
+.woocommerce-order-received
+  .woocommerce-order
+  table.order_details
+  tfoot
+  tr:last-child
+  th {
+  border-bottom: 0;
+}
+
+.woocommerce-order-received
+  .woocommerce-order
+  table.order_details
+  tfoot
+  tr:last-child
+  td {
+  border-bottom: 0;
+}
+
+/* Adresse de facturation */
+.woocommerce-order-received .woocommerce-customer-details address {
+  padding: 1.5rem 1.75rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-l);
+  background-color: var(--color-background-page);
+  font-style: normal;
+}
+
+/* Bouton « Annuler » en contour : ce n'est pas une action principale */
+.woocommerce-order-received table.order_details .button {
+  border: 2px solid var(--color-text-primary);
+  background-color: transparent;
+  color: var(--color-text-primary);
+}
+
+.woocommerce-order-received table.order_details .button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Page Commande : les couleurs de Storefront remplacées par les nôtres */
+
+/* Rond du moyen de paiement sélectionné, en rose comme dans le panier */
+body
+  #payment
+  .payment_methods
+  li
+  input[type="radio"]:first-child:checked
+  + label::before {
+  color: var(--color-brand-secondary);
+}
+
+/* Boutons radio de « Réception » en rose */
+.woocommerce-checkout #shipping_method input {
+  accent-color: var(--color-brand-secondary);
+}
+
+/* Moyens de paiement : fond blanc au lieu du gris */
+body #payment .payment_methods > li:not(.woocommerce-notice) {
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-background-page);
+}
+
+body #payment .payment_methods > li:not(.woocommerce-notice):hover {
+  background-color: var(--color-background-section);
+}
+
+/* Texte explicatif sous le moyen choisi, sur fond beige */
+body #payment .payment_methods > li .payment_box {
+  background-color: var(--color-background-section);
+}
+
+body #payment .place-order {
+  background-color: var(--color-background-page);
+}
+
+/* Récapitulatif : lignes blanches (l'identifiant #order_review bat les fonds gris de Storefront) */
+#order_review table.woocommerce-checkout-review-order-table tr th {
+  background-color: var(--color-background-page);
+}
+
+#order_review table.woocommerce-checkout-review-order-table tr td {
+  background-color: var(--color-background-page);
+}
+
+/* … sauf l'encadré des instructions de retrait, qui garde son fond beige */
+#order_review
+  table.woocommerce-checkout-review-order-table
+  tr.dunkin-retrait
+  td {
+  background-color: var(--color-background-section);
+}
+
 /* =========================================================
    11. MON COMPTE
    ========================================================= */
