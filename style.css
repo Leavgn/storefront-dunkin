@@ -2055,6 +2055,54 @@ body #payment .place-order {
   text-decoration: underline;
 }
 
+/* AVIS */
+body .star-rating span::before,
+body.single-product #reviews p.stars a,
+body.single-product #reviews p.stars a::before {
+  color: var(--color-brand-primary);
+}
+body .star-rating::before {
+  color: var(--color-border-default);
+}
+
+body.single-product #reviews #comments ol.commentlist li {
+  padding: 0;
+  margin-bottom: 1rem;
+  border: 0;
+}
+body.single-product #reviews #comments ol.commentlist li .comment_container {
+  padding: 1.25rem;
+  background: var(--color-background-section);
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px;
+}
+body.single-product #reviews #comments ol.commentlist li img.avatar {
+  display: none;
+}
+body.single-product #reviews #comments ol.commentlist li .comment-text {
+  margin-left: 0;
+}
+body.single-product #reviews .woocommerce-review__verified {
+  color: var(--color-success);
+  font-weight: 800;
+}
+body.single-product #reviews #reply-title {
+  font-family: var(--font-heading);
+  color: var(--color-text-brand);
+}
+
+body.single-product #reviews #comments ol.commentlist li .comment-text {
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body.single-product #reviews #comments ol.commentlist li .comment_container {
+  display: block;
+  padding-left: 1.25rem;
+}
+
 /* =========================================================
    MOBILE
    ========================================================= */

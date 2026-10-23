@@ -425,3 +425,10 @@ add_filter( 'wp_get_attachment_image_attributes', function ( $attr ) {
 add_action( 'wp_enqueue_scripts', function () {
 	wp_dequeue_style( 'storefront-fonts' );
 }, 999 );
+
+/* IT-14 : avis clients */
+add_filter( 'woocommerce_product_review_comment_form_args', function ( $args ) {
+	$args['title_reply'] = 'Donne ton avis';
+	$args['label_submit'] = 'Publier mon avis';
+	return $args;
+} );
