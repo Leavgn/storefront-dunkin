@@ -394,3 +394,20 @@ add_filter( 'woocommerce_product_upsells_products_heading', function () {
 add_filter( 'woocommerce_product_cross_sells_products_heading', function () {
 	return 'Envie d\'ajouter… ?';
 } );
+
+// IT-Y : balise meta description (SEO)
+// Fiche produit : sa description courte. Autres pages : le slogan du site.
+add_action( 'wp_head', function () {
+	$description = get_bloginfo( 'description' );
+
+	if ( is_product() ) {
+		$produit = wc_get_product( get_the_ID() );
+		if ( $produit && $produit->get_short_description() ) {
+			$description = $produit->get_short_description();
+		}
+	}
+
+	if ( $description ) {
+		echo '<meta name="description" content="' . esc_attr( wp_trim_words( wp_strip_all_tags( $description ), 25 ) ) . '">' . "\n";
+	}
+}, 1 );   // ← ici : avant c'était « } ); », on a ajouté « , 1 »
