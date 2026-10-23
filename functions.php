@@ -410,4 +410,18 @@ add_action( 'wp_head', function () {
 	if ( $description ) {
 		echo '<meta name="description" content="' . esc_attr( wp_trim_words( wp_strip_all_tags( $description ), 25 ) ) . '">' . "\n";
 	}
-}, 1 );   // ← ici : avant c'était « } ); », on a ajouté « , 1 »
+}, 1 );   
+
+// IT-Y : la photo principale du produit (l'élément LCP) est chargée en priorité
+add_filter( 'wp_get_attachment_image_attributes', function ( $attr ) {
+	if ( is_product() && isset( $attr['class'] ) && false !== strpos( $attr['class'], 'wp-post-image' ) ) {
+		$attr['fetchpriority'] = 'high';
+		$attr['loading']       = 'eager';
+	}
+	return $attr;
+} );
+
+// IT-Y : on retire la police Google de Storefront (Source Sans Pro), qu'on n'utilise pas
+add_action( 'wp_enqueue_scripts', function () {
+	wp_dequeue_style( 'storefront-fonts' );
+}, 999 );
